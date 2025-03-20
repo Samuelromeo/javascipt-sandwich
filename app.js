@@ -1,62 +1,70 @@
-const cars = [
-  { name: "Lamborghini Huracan", rentPrice: 100, category: "sport" },
-  { name: "Range Rover Velar", rentPrice: 70, category: "suv" },
-  { name: "Audi R8", rentPrice: 120, category: "sport" },
-  { name: "Mustang", rentPrice: 80, category: "vintage" },
-  { name: "Porche 911", rentPrice: 120, category: "sport" },
-  { name: "Chevrolet Camaro 1970", rentPrice: 80, category: "vintage" },
-  { name: "Rolls Royce", rentPrice: 70, category: "sport" },
-  { name: "Tesla Model X", rentPrice: 120, category: "suv" },
-  { name: "BMW X5", rentPrice: 40, category: "suv" },
-  { name: "Volkswagen Beetle 1972", rentPrice: 30, category: "vintage" },
-];
+// write a simple atm js algo
+// checkBalance
+// withdrawAmount
+// depositAmount
+// checkPin
 
-cars[1];
-cars[0].name;
+let balance = 5000
+let pin = 1234
+let attempts = 3
 
-const vintageCars = cars.filter((car) => car.category === "vintage");
-console.log(vintageCars);
+//checkPin
 
-let totalrentPrice = cars.reduce((acc, car) => acc + car.rentPrice, 0);
+function checkPin (enteredPin) {
+    while (attempts > 0) {
+      if (enteredPin === pin) {
+        attempts = 3
+        startAtm()
+        return "Start ATM";
+      } else {
+        attempts--;
+        return `Incorrect Pin, ${attempts} attempts left`;
+      }
+    }
+    return "Your card has been blocked"
+}
 
-const carsMorethan100 = cars.every((c) => c.rentPrice > 100);
+console.log(checkPin(1234));
 
-let myName = "Kelvin";
-// == ===
+function startAtm(choice){
+    if (choice === 1) {
+        //withdrawal
+        withdrawAmount(1000)
+    } else if (choice ===2) {
+        //depoist
+        depoistAmount(3000)
+    } else if (choice ===3) {
+        // check balance
+        checkBalance()
+    } else if (choice ===4) {
+        //exit
+        return "Thank you for banking with us"
+    } else {
+        //invalid option
+        return "Invalid option, try again"
+    }
+}
 
-let data = {
-  success: true,
-  message: "Product in Stock",
-  products: ["Glasses", "Lipssticks", "Shoes"],
-};
+// function to check balance
+function checkBalance () {
+    return `Your current balance is $${balance}`
+}
+console.log(checkBalance());
 
-console.log(data.products[2]);
+function withdrawAmount (amount) {
+    if (amount <= balance) {
+        balance -= amount
+        return "Withdrawal Successful"
+    } else {
+        return "Insufficient funds"
+    }
+}
+console.log(withdrawAmount(1000));
 
-const { products } = data;
-products[2];
+function depoistAmount (amount) {
+    balance += amount
+    return "Deposit successful"
+}
+console.log(depoistAmount());
 
-const meals = [
-  {
-    meal: {
-      name: "Sushi",
-      price: 45,
-      category: "Side",
-    },
-  },
-];
 
-console.log(meals[0].meal.name);
-
-const airline = {
-  types: [
-    {
-      name: {
-        brand: "Air Peace",
-        brand2: "Green Africa",
-        brand3: "Max Air",
-        brand4: "Emirates",
-      },
-    },
-  ],
-};
-console.log(airline.types[0].name.brand3);
