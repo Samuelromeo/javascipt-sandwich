@@ -1,0 +1,22 @@
+.mybtn {
+    background-color: blue;
+    color: white;
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+.wow {
+    text-transform: uppercase;;
+}
+
+.mysection {
+    background-color: blue;
+    width: 200;
+    height: 200px;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+small {display: none;}
